@@ -41,7 +41,7 @@ public class advancedjavaproject {
         int choice = 0;
 
         // Loop through the program until the user chooses to exit
-        while (choice != 7) {
+        while (choice != 8) {
             // Display the menu options
             System.out.println("Choose a number between 1 and 7:");
             System.out.println("1. Add items");
@@ -50,7 +50,8 @@ public class advancedjavaproject {
             System.out.println("4. List products");
             System.out.println("5. Search products");
             System.out.println("6. Calculate total of all items");
-            System.out.println("7. Exit");
+            System.out.println("7. Generate report");
+            System.out.println("8. Exit");
 
             // Get the user's choice
             System.out.print("Enter your choice: ");
@@ -77,6 +78,9 @@ public class advancedjavaproject {
                     Methods.calculateTotalvalue(connection);
                     break;
                 case 7:
+                    Methods.generateReport(connection);
+                    break;
+                case 8:
                     System.out.println("Exiting program...");
                     logger.log(Level.INFO, "Program exited");
                     break;

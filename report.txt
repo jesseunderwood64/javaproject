@@ -1,0 +1,15 @@
+PRODUCT REPORT
+---------------------------------------------------------------------
+| idproducts | products             | numberofproducts     | specifications                                                                                       |
+---------------------------------------------------------------------
+| 1          | sprite               | 100.00               | Lemon-lime flavored soft drink.                                                                      |
+| 2          | sierra mist          | 60.00                | Lemon-lime flavored soft drink.                                                                      |
+| 3          | dr pepper            | 200.00               | 33 flavor soda                                                                                       |
+| 4          | mountain dew         | 75.00                | Citrus-flavored soft drink.                                                                          |
+| 5          | pepsi                | 150.00               | Carbonated cola-flavored soft drink.                                                                 |
+| 6          | diet coke            | 25.00                | Sugar-free version of Coca-Cola.                                                                     |
+| 7          | diet pepsi           | 300.00               | Sugar-free version of Pepsi.                                                                         |
+| 8          | mountain dew         | 20.00                | Citrus-flavored soft drink.                                                                          |
+| 9          | diet mountain dew    | 80.00                | Sugar-free version of Mountain Dew.                                                                  |
+| 10         | diet dr pepper       | 250.00               | Sugar-free version of Dr Pepper.                                                                     |
+---------------------------------------------------------------------

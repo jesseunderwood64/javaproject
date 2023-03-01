@@ -1,5 +1,8 @@
 package advancedjavaproject;
 
+import java.io.BufferedWriter;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -12,7 +15,7 @@ public class Methods {
     public static void subtractInventory(Connection connection) {
         Scanner scanner = new Scanner(System.in);
         try {
-            // Get the product ID and inventory to add
+            // Get the product ID and inventory to subtract
             System.out.print("Enter the product ID: ");
             int productId = scanner.nextInt();
             System.out.print("Enter the inventory to subtract: ");
@@ -80,8 +83,10 @@ public class Methods {
         Scanner scanner = new Scanner(System.in);
         System.out.print("Enter the ID of the row to update: ");
         int id = scanner.nextInt();
+        scanner.nextLine(); // consume the newline character
+        
         System.out.print("Enter the specifications: ");
-        String specifications = scanner.next();
+        String specifications = scanner.nextLine();
 
         String specificationssql = "UPDATE products SET specifications = ? WHERE idproducts = ?";
         try (PreparedStatement statement = connection.prepareStatement(specificationssql)) {
@@ -214,6 +219,30 @@ public class Methods {
 				System.out.println("calculatetotalvalue called.");
 			}
 			}
+        public static void generateReport(Connection connection) {
+            try {
+                Statement statement = connection.createStatement();
+                ResultSet resultSet = statement.executeQuery("SELECT * FROM products");
+                BufferedWriter writer = new BufferedWriter(new FileWriter("report.txt"));
+                writer.write("PRODUCT REPORT\n");
+                writer.write("---------------------------------------------------------------------\n");
+                writer.write(String.format("| %-10s | %-20s | %-20s | %-100s |%n", "idproducts", "products", "numberofproducts", "specifications"));
+                writer.write("---------------------------------------------------------------------\n");
+                while (resultSet.next()) {
+                    int idproducts = resultSet.getInt("idproducts");
+                    String products = resultSet.getString("products");
+                    double numberofproducts = resultSet.getDouble("numberofproducts");
+                    String specifications = resultSet.getString("specifications");
+                    writer.write(String.format("| %-10d | %-20s | %-20.2f | %-100s |%n", idproducts, products, numberofproducts, specifications));
+                }
+                writer.write("---------------------------------------------------------------------\n");
+                writer.close();
+                System.out.println("Report generated successfully.");
+            } catch (SQLException | IOException e) {
+                System.out.println("Error generating report: " + e.getMessage());
+            }
+        }
+
            
     }
 
